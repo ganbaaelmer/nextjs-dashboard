@@ -1,5 +1,8 @@
 //you're importing the <SideNav /> component into your layout. Any components you import into this file will be part of the layout.
 import SideNav from '@/app/ui/dashboard/sidenav';
+
+//Implementing Partial Prerendering
+export const experimental_ppr = true;
  
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
