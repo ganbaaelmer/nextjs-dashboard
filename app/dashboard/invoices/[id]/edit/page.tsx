@@ -2,7 +2,8 @@ import Form from '@/app/ui/invoices/edit-form';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 //Fetch the specific invoice
 import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
- 
+//Handling 404 errors with the notFound function
+import { notFound } from 'next/navigation';
 
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -12,6 +13,10 @@ export default async function Page({ params }: { params: { id: string } }) {
         fetchInvoiceById(id),
         fetchCustomers(),
       ]);
+
+    if (!invoice) {
+      notFound();
+    }
 
   return (
     <main>
